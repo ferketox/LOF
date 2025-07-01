@@ -3,20 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library of Ferketox</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>LOF - Library of Ferketox</title>
     <style>
-        /* Base Styles */
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --light-gray: #f0f0f0;
-            --accent: #d32f2f;
-            --neon-glow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -24,580 +12,353 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: var(--white);
-            background-color: var(--black);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
             overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Header */
-        .header {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 30px;
-            font-size: 2.5rem;
-            font-weight: 300;
-            width: 100%;
-            text-align: center;
-            letter-spacing: 2px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: fixed;
-            top: 0;
-            z-index: 100;
             font-family: 'Times New Roman', Times, serif;
         }
 
-        /* Container */
         .container {
-            max-width: 1200px;
-            width: 90%;
-            margin: 120px auto 50px;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 20px;
         }
 
-        /* Controls */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            font-weight: 300;
+        }
+
         .controls {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 20px;
             margin-bottom: 40px;
             flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
         }
 
         .search-bar {
-            flex-grow: 1;
-            min-width: 300px;
-        }
-
-        .search-bar input {
             width: 100%;
-            padding: 12px 20px;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
             font-size: 16px;
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .search-bar input:focus {
             outline: none;
-            border-color: var(--white);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        .filter {
+        .search-bar:focus {
+            border-color: #4ecdc4;
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-bar::placeholder {
+            color: #666;
+        }
+
+        .filter-container {
             display: flex;
+            gap: 15px;
             align-items: center;
-            gap: 10px;
         }
 
-        .filter label {
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-select {
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 45px;
         }
 
-        .filter select {
-            padding: 10px 15px;
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            border-radius: 10px;
+        .dropdown-select:hover,
+        .dropdown-select:focus {
+            border-color: #4ecdc4;
+            box-shadow: 0 0 15px rgba(78, 205, 196, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* Book Grid */
-        .book-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            width: 100%;
+        .dropdown-select option {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 10px;
         }
 
-        .book-link {
+        .about-btn {
+            padding: 12px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
             text-decoration: none;
-            color: inherit;
             display: inline-block;
         }
 
-        .book {
-            background: var(--gray);
+        .about-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-color: transparent;
+            color: white;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .book-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
             padding: 25px;
-            border-radius: 5px;
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            transition: 0.3s;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
-        .book:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent);
-        }
-
-        .book:before {
+        .book-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: var(--transition);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
         }
 
-        .book:hover:before {
-            opacity: 1;
+        .book-card:hover::before {
+            left: 100%;
         }
 
-        .book img {
-            width: 100%;
-            max-width: 160px;
-            height: auto;
-            aspect-ratio: 2 / 3;
-            object-fit: cover;
-            border-radius: 3px;
-            margin-bottom: 20px;
-            /*border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);*/
+        .book-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(78, 205, 196, 0.5);
         }
 
         .book-title {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 400;
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
+            margin-bottom: 10px;
+            color: #ffffff;
+            line-height: 1.3;
         }
 
-        .book-title:hover {
-            color: var(--accent);
-        }
-
-        .writer {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 12px;
+        .book-author {
+            color: #4ecdc4;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .book-category {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border-radius: 15px;
             font-size: 0.8rem;
-            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 60px;
+            grid-column: 1 / -1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #4ecdc4;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Floating Shapes */
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .shape {
-            position: absolute;
-            background: var(--white);
-            opacity: 0.03;
-            border-radius: 50%;
-            filter: blur(30px);
-            transform-style: preserve-3d;
-            animation: float 15s infinite linear;
-        }
-
-        .shape:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: 20%;
-            left: 80%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            left: 10%;
-            animation-delay: 2s;
-            animation-duration: 12s;
-        }
-
-        .shape:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            top: 40%;
-            left: 60%;
-            animation-delay: 4s;
-            animation-duration: 18s;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .header {
-                font-size: 1.5rem;
-                padding: 20px;
-                font-family: 'Times New Roman', Times, serif;
-            }
-            
-            .container {
-                margin-top: 90px;
-            }
-            
             .controls {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
-            .search-bar {
-                min-width: 100%;
+
+            .search-container {
+                max-width: none;
             }
-            
-            .filter {
-                justify-content: space-between;
-                width: 100%;
+
+            .filter-container {
+                justify-content: center;
             }
-            
-            .book-container {
+
+            .books-grid {
                 grid-template-columns: 1fr;
             }
+
+            .stats {
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
         }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px; 
+            color: #fff; 
+            font-family: Arial, sans-serif; 
+}
+
     </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-
-    <div class="header">Library Of FERKETOX</div>
     <div class="container">
-        <div class="controls">
-            <div class="search-bar">
-                <input type="text" id="search" onkeyup="searchBooks()" placeholder="Search for books...">
+        <header>
+            <h1 class="logo">LOF</h1>
+            <p class="subtitle">Library of Ferketox - Your digital library.</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalBooks">0</div>
+                <div class="stat-label">Total Books</div>
             </div>
-            <div class="filter">
-                <label for="category">Filter:</label>
-                <select id="category" onchange="filterBooks()">
-                    <option value="all">All Categories</option>
-                    <option value="finance">Finance</option>
-                    <option value="economics">Economics</option>
-                    <option value="mba">MBA</option>
-                    <option value="business">Business</option>
-                    <option value="others">Others</option>
-                </select>
+            <div class="stat-item">
+                <div class="stat-number" id="visibleBooks">0</div>
+                <div class="stat-label">Showing</div>
             </div>
         </div>
 
-        <div class="book-container">
-            <a href="https://drive.google.com/file/d/1WbQrbKRbYhrSw03Ga8VhcoQi4Xmzr5hC/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="images/candlestick trading bible.png" alt="The CandleStick Trading Bible" class="book-image" onerror="this.style.display='none'">
-                  <div class="book-title">The CandleStick Trading Bible</div>
-                  <div class="writer">Munehisa Homma</div>
-                  <div class="book-category">Trading</div>
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" class="search-bar" id="searchBar" placeholder="Search books, authors, or keywords...">
+            </div>
+            <div class="filter-container">
+                <div class="dropdown">
+                    <select class="dropdown-select" id="categoryFilter">
+                        <option value="all">All Categories</option>
+                    </select>
                 </div>
-            </a>
-            <a href="https://drive.google.com/file/d/1Ws8r7rgE5U5UBEckQc8zPP9hM10KIwHo/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="economics">
-                  <img src="images/getting to yes.png" alt="Getting to Yes" onerror="this.style.display='none'">
-                  <div class="book-title">Getting to Yes</div>
-                  <div class="writer">Roger Fisher</div>
-                  <div class="book-category">Negotiation</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1Wovib2jY9SnDN3zaNrWDg9nXin5i7MoM/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="mba">
-                  <img src="images/predictably bookcover.png" alt="Predictable" onerror="this.style.display='none'">
-                  <div class="book-title">Predictable</div>
-                  <div class="writer">Dan Ariely</div>
-                  <div class="book-category">Psychology</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1WoR-UE_UFOOm6pk613Mk626c3-694V_U/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="business">
-                  <img src="images/rich-dad-poor-dad.png" alt="Rich Dad Poor Dad" onerror="this.style.display='none'">
-                  <div class="book-title">Rich Dad Poor Dad</div>
-                  <div class="writer">Robert T. Kiyosaki</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1WnfJD6nslkoGl0Nl4l1mIepTQP4Fc1Mf/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="others">
-                  <img src="images/wealth of nations.png" alt="The Wealth of Nations" onerror="this.style.display='none'">
-                  <div class="book-title">The Wealth of Nations</div>
-                  <div class="writer">Adam Smith</div>
-                  <div class="book-category">Economics</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1WnoW8VQ9HzoLojmWGx00Y3njshQqwdsX/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="images/psychology of money.png" alt="The Psychology of Money" onerror="this.style.display='none'">
-                  <div class="book-title">The Psychology of Money</div>
-                  <div class="writer">Morgan Housel</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XQs9N6-H1Ojilg_ESH7JViRrGa5Te4p7/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="images/blue ocean strategy.png" alt="Blue Ocean Strategy" onerror="this.style.display='none'">
-                  <div class="book-title">Blue Ocean Strategy</div>
-                  <div class="writer">W. Chan Kim & Renee Mauborgne</div>
-                  <div class="book-category">Business Strategy</div>
-                </div>
-            </a>
-              
-            <a href="#" target="_blank" class="book-link">
-                <div class="book" data-category="economics">
-                  <img src="images/good to great.png" alt="Good to Great" onerror="this.style.display='none'">
-                  <div class="book-title">Good to Great</div>
-                  <div class="writer">Jim Collins</div>
-                  <div class="book-category">Business Strategy</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XTfJ4pRkyxILNdyd5c2ImFk3xxNNzr23/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="mba">
-                  <img src="images/art ofstrategy.png" alt="The Art of Strategy" onerror="this.style.display='none'">
-                  <div class="book-title">The Art of Strategy</div>
-                  <div class="writer">Avinash K. Dixit & Barry J. Nalebuff</div>
-                  <div class="book-category">Business Strategy</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XFTmDTnLjd-cYm8Od4vcrcbqUNBcQxlz/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="business">
-                  <img src="images/measure what matters.png" alt="Measure What Matters" onerror="this.style.display='none'">
-                  <div class="book-title">Measure What Matters</div>
-                  <div class="writer">John Doerr</div>
-                  <div class="book-category">Business Strategy</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XHIVoizas8k2zYZ_U0yGb2VcbTXJPkTW/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="others">
-                  <img src="images/hard things about hard things book cover.png" alt="The Hard Thing About Hard Things" onerror="this.style.display='none'">
-                  <div class="book-title">The Hard Thing About Hard Things</div>
-                  <div class="writer">Ben Horowitz</div>
-                  <div class="book-category">Business Strategy</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XHRVpMfd9ONZu199RjRztdFSgxp7YZjL/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="images/your money or your life.png" alt="Your Money or Your Life" onerror="this.style.display='none'">
-                  <div class="book-title">Your Money or Your Life</div>
-                  <div class="writer">Vicki Robin & Joe Dominguez</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XHu24BZSh9whgqUjoxXggQKLkYN8jC5j/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="others">
-                  <img src="images/teach you to be rich.png" alt="I Will Teach You to Be Rich" onerror="this.style.display='none'">
-                  <div class="book-title">I Will Teach You to Be Rich</div>
-                  <div class="writer">Ramit Sethii</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XNG15muUaMdDb4e8_2IervaSWqSX1P61/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="images/millionaire next door.png" alt="The Millionaire Next Door" onerror="this.style.display='none'">
-                  <div class="book-title">The Millionaire Next Door</div>
-                  <div class="writer">Thomas J. Stanley & William D. Danko</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XOwwXvDxQfZWbiQHYZEAit3bXal7vbO1/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="others">
-                  <img src="images/broke millennial.png" alt="Broke Millennial" onerror="this.style.display='none'">
-                  <div class="book-title">Broke Millennial</div>
-                  <div class="writer">Erin Lowry</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1XQU8VSw04Erd7u8HPcqWmELMzquT8Vp8/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="images/die with zero.png" alt="Die With Zero" onerror="this.style.display='none'">
-                  <div class="book-title">Die With Zero</div>
-                  <div class="writer">Bill Perkins</div>
-                  <div class="book-category">Money Management</div>
-                </div>
-            </a>
-        
+                <a href="about.html" class="about-btn">About</a>
+            </div>
+        </div>
 
-
-
-
-            <a href="https://drive.google.com/file/d/1aotQBVR9ryheoIZ0Tm59EOtDPtxS4Vzz/view?usp=drivesdk" target="_blank" class="book-link">
-               <div class="book" data-category="economics">
-                 <img src="" alt="" onerror="this.style.display='none'">
-                 <div class="book-title">Capital in the Twenty-First Century</div>
-                 <div class="writer">Thomas Piketty</div>
-                 <div class="book-category">Economics</div>
-               </div>
-            </a>
-          
-            <a href="https://drive.google.com/file/d/1b2gc53T3tLvxmOFxkNVR8XdBUVroMtb8/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">The Richest Man in Babylon</div>
-                  <div class="writer">George S. Clason</div>
-                  <div class="book-category">Finance</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1bbwtFz5KJ_eT4jruh48So_TDHOfUJzVB/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="mba">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">The Innovator's  Dilemma</div>
-                  <div class="writer">Clayton M. Christensen</div>
-                  <div class="book-category">MBA</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1aun895cTd18q4kGv04aLZnv9fscjw7_9/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="economics">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">Flash Boys</div>
-                  <div class="writer">Michael Lewis</div>
-                  <div class="book-category">Economics</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1baFAMj-dv5sq1YBVuod6RhT-iGANYT9P/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="investing">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">A Random Walk Down Wall Street</div>
-                  <div class="writer">Burton G. Malkiel</div>
-                  <div class="book-category">Investing & Stock Market</div>
-                </div>
-            </a> 
-            <a href="https://drive.google.com/file/d/1bZnQoH5vUbIG-P2r118JGFjEV8lQv9EM/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="mba">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">Playing To Win</div>
-                  <div class="writer">A.G Lafley & Roger L. Martin</div>
-                  <div class="book-category">MBA</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1bVkuvZN3zA0D2i4tX1RbRwU5OmIuEjnz/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="investing">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">The Essays of Warren Buffett: Lessons for Corporate America</div>
-                  <div class="writer">Warren E. Buffett</div>
-                  <div class="book-category">Investing & Stock Market</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1amyZX3ECDAIR6EQxoac-9wyxo60OfBUd/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="finance">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">Financial Freedom</div>
-                  <div class="writer">Grant Sabatier</div>
-                  <div class="book-category">Finance</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1ao5FYGPwF2TLPTmtMRdH5iJS_lgW7WBQ/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="economics">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">Freakonomics</div>
-                  <div class="writer">Steven D. Levitt & Stephen J. Dubner</div>
-                  <div class="book-category">Economics</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1bkN-AfOjw1IZkibpp6F_tol0nVX9YXcF/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="investing">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">The Little Book of Common Sense Investing</div>
-                  <div class="writer">John C. Bogle</div>
-                  <div class="book-category">Investing & Stock Market</div>
-                </div>
-            </a> 
-    
-            <a href="https://drive.google.com/file/d/1au8yGtz7MudWy1atrz7dBmZ29Yh25dFb/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="economics">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">Lords of Finance</div>
-                  <div class="writer">Liaquat Ahamed</div>
-                  <div class="book-category">Economics</div>
-                </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1axY4drbrYBb4ro-oYbirTX3SePD6FkJs/view?usp=drivesdk" target="_blank" class="book-link">
-                <div class="book" data-category="economics">
-                  <img src="" alt="" onerror="this.style.display='none'">
-                  <div class="book-title">Misbehaving - The Making of Behavioral Economics</div>
-                  <div class="writer">Richard H. Thaler</div>
-                  <div class="book-category">Economics</div>
-                </div>
-            </a>
-          
-            <a href="https://drive.google.com/file/d/1b-5V5DX6p4Z_J4Ql_xQOxtwi09UEraqw/view?usp=drivesdk" target="_blank" class="book-link">
-               <div class="book" data-category="finance">
-                 <img src="" alt="" onerror="this.style.display='none'">
-                 <div class="book-title">Money Master The Game</div>
-                 <div class="writer">Tony Robbins</div>
-                 <div class="book-category">Finance</div>
-               </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1arBC9n4GrLL_vbxwbqQT3jn9jHBHm-UV/view?usp=drivesdk" target="_blank" class="book-link">
-               <div class="book" data-category="economics">
-                 <img src="" alt="" onerror="this.style.display='none'">
-                 <div class="book-title">Nudge The Final Edition</div>
-                 <div class="writer">Richard H. Thaler & Cass R. Sunstein</div>
-                 <div class="book-category">Economics</div>
-               </div>
-            </a>
-              
-            <a href="https://drive.google.com/file/d/1bhocR8pmKJDg5BRuGs3W35IFwb_2XTXq/view?usp=drivesdk" target="_blank" class="book-link">
-               <div class="book" data-category="investing">
-                 <img src="" alt="" onerror="this.style.display='none'">
-                 <div class="book-title">One Up on Wall Street</div>
-                 <div class="writer">Peter Lynch with John Rothchild</div>
-                 <div class="book-category">Investing & Stock Market</div>
-               </div>
-            </a> 
-            
+        <div class="books-grid" id="booksGrid"></div>
     </div>
+
+    <footer>
+        &copy; 2025 Ferketox. All rights reserved.
+    </footer>
 
     <script>
         function filterBooks() {
@@ -613,25 +374,127 @@
             });
         }
 
-        function searchBooks() {
-            const searchValue = document.getElementById("search").value.toLowerCase();
-            const books = document.querySelectorAll(".book");
+        const books = [
+            { title: "Broke Millennial", author: "Erin Lowry", category: "money management", link: "https://drive.google.com/file/d/1XOwwXvDxQfZWbiQHYZEAit3bXal7vbO1/view?usp=drivesdk" },
+            { title: "Rich Dad Poor Dad", author: "Robert T. Kiyosaki", category: "finance", link: "https://drive.google.com/file/d/1WoR-UE_UFOOm6pk613Mk626c3-694V_U/view?usp=drivesdk" },
+            { title: "The MBA Application Roadmap", author: "Die With Zero", category: "money management", link: "https://drive.google.com/file/d/1XQU8VSw04Erd7u8HPcqWmELMzquT8Vp8/view?usp=drivesdk" },
+            { title: "Capital in the Twenty-First Century", author: "Thomas Piketty", category: "economics", link: "https://drive.google.com/file/d/1aotQBVR9ryheoIZ0Tm59EOtDPtxS4Vzz/view?usp=drivesdk" },
+            { title: "The Richest Man in Babylon", author: "George S. Clason", category: "finance", link: "https://drive.google.com/file/d/1b2gc53T3tLvxmOFxkNVR8XdBUVroMtb8/view?usp=drivesdk" },
+            { title: "The Innovator's Dilemma", author: "Clayton M. Christensen", category: "mba", link: "https://drive.google.com/file/d/1bbwtFz5KJ_eT4jruh48So_TDHOfUJzVB/view?usp=drivesdk" },
+            { title: "Flash Boys", author: "Michael Lewis", category: "economics", link: "https://drive.google.com/file/d/1aun895cTd18q4kGv04aLZnv9fscjw7_9/view?usp=drivesdk" },
+            { title: "A Random Walk Down Wall Street", author: "Burton Malkiel", category: "finance", link: "https://drive.google.com/file/d/1baFAMj-dv5sq1YBVuod6RhT-iGANYT9P/view?usp=drivesdk" },
+            { title: "Playing To Win", author: "A.G Lafley & Roger L. Martin", category: "mba", link: "https://drive.google.com/file/d/1bZnQoH5vUbIG-P2r118JGFjEV8lQv9EM/view?usp=drivesdk" },
+            { title: "The Essays of Warren Buffett: Lessons for Corporate America", author: "Warren E. Buffett", category: "investing & stock market", link: "https://drive.google.com/file/d/1bVkuvZN3zA0D2i4tX1RbRwU5OmIuEjnz/view?usp=drivesdk" },
+            { title: "The Psychology of Money", author: "Morgan Housel", category: "finance", link: "https://drive.google.com/file/d/1WnoW8VQ9HzoLojmWGx00Y3njshQqwdsX/view?usp=drivesdk" },
+            { title: "Financial Freedom", author: "Grant Sabatier", category: "finance", link: "https://drive.google.com/file/d/1amyZX3ECDAIR6EQxoac-9wyxo60OfBUd/view?usp=drivesdk" },
+            { title: "Freakonomics", author: "Steven D. Levitt & Stephen J. Dubner", category: "economics", link: "https://drive.google.com/file/d/1ao5FYGPwF2TLPTmtMRdH5iJS_lgW7WBQ/view?usp=drivesdk" },
+            { title: "The Little Book of Common Sense Investing", author: "John C. Bogle", category: "investing & stock market", link: "https://drive.google.com/file/d/1bkN-AfOjw1IZkibpp6F_tol0nVX9YXcF/view?usp=drivesdk" },
+            { title: "Lords of Finance", author: "Liaquat Ahamed", category: "economics", link: "https://drive.google.com/file/d/1au8yGtz7MudWy1atrz7dBmZ29Yh25dFb/view?usp=drivesdk" },
+            { title: "Misbehaving - The Making of Behavioral Economics", author: "Richard H. Thaler", category: "economics", link: "https://drive.google.com/file/d/1axY4drbrYBb4ro-oYbirTX3SePD6FkJs/view?usp=drivesdk" },
+            { title: "The Millionaire Next Door", author: "Thomas Stanley", category: "finance", link: "https://drive.google.com/file/d/1XNG15muUaMdDb4e8_2IervaSWqSX1P61/view?usp=drivesdk" },
+            { title: "Money Master The Game", author: "Tony Robbins", category: "finance", link: "https://drive.google.com/file/d/1b-5V5DX6p4Z_J4Ql_xQOxtwi09UEraqw/view?usp=drivesdk" },
+            { title: "Nudge The Final Edition", author: "Richard H. Thaler & Cass R. Sunstein", category: "economics", link: "https://drive.google.com/file/d/1arBC9n4GrLL_vbxwbqQT3jn9jHBHm-UV/view?usp=drivesdk" },
+            { title: "One Up on Wall Street", author: "Peter Lynch with John Rothchild", category: "investing & stock market", link: "https://drive.google.com/file/d/1bhocR8pmKJDg5BRuGs3W35IFwb_2XTXq/view?usp=drivesdk" },
+            { title: "I Will Teach You to Be Rich", author: "Ramit Sethii", category: "money management", link: "https://drive.google.com/file/d/1XHu24BZSh9whgqUjoxXggQKLkYN8jC5j/view?usp=drivesdk" },
+            { title: "Your Money or Your Life", author: "Vicki Robin & Joe Dominguez", category: "money nanagement", link: "https://drive.google.com/file/d/1XHRVpMfd9ONZu199RjRztdFSgxp7YZjL/view?usp=drivesdk" },
+            { title: "The Hard Thing About Hard Things", author: "Ben Horowitz", category: "entrepreneurship", link: "https://drive.google.com/file/d/1XHIVoizas8k2zYZ_U0yGb2VcbTXJPkTW/view?usp=drivesdk" },
+            { title: "Measure What Matters", author: "John Doerr", category: "entrepreneurship", link: "https://drive.google.com/file/d/1XFTmDTnLjd-cYm8Od4vcrcbqUNBcQxlz/view?usp=drivesdk" },
+            { title: "The Art of Strategy", author: "Avinash K. Dixit & Barry J. Nalebuff", category: "entrepreneurship", link: "https://drive.google.com/file/d/1XTfJ4pRkyxILNdyd5c2ImFk3xxNNzr23/view?usp=drivesdk" },
+            { title: "Blue Ocean Strategy", author: "W. Chan Kim & Renee Mauborgne", category: "entrepreneurship", link: "https://drive.google.com/file/d/1XQs9N6-H1Ojilg_ESH7JViRrGa5Te4p7/view?usp=drivesdk" },
+            { title: "The Wealth of Nations", author: "Adam Smith", category: "economics", link: "https://drive.google.com/file/d/1WnfJD6nslkoGl0Nl4l1mIepTQP4Fc1Mf/view?usp=drivesdk" },
+            { title: "Predictable", author: "Dan Ariely", category: "psychology", link: "https://drive.google.com/file/d/1Wovib2jY9SnDN3zaNrWDg9nXin5i7MoM/view?usp=drivesdk" },
+            { title: "Getting to Yes", author: "Roger Fisher", category: "negotiation", link: "https://drive.google.com/file/d/1Ws8r7rgE5U5UBEckQc8zPP9hM10KIwHo/view?usp=drivesdk" },
+            { title: "The CandleStick Trading Bible", author: "Munehisa Homma", category: "trading", link: "https://drive.google.com/file/d/1WbQrbKRbYhrSw03Ga8VhcoQi4Xmzr5hC/view?usp=drivesdk" }
+        ];
 
-            books.forEach(book => {
-                const title = book.querySelector(".book-title").innerText.toLowerCase();
-                const author = book.querySelector(".writer").innerText.toLowerCase();
-                const category = book.querySelector(".book-category").innerText.toLowerCase();
-                
-                if (title.includes(searchValue) || author.includes(searchValue) || category.includes(searchValue)) {
-                    book.style.display = "block";
-                } else {
-                    book.style.display = "none";
-                }
+        let filteredBooks = [...books];
+        const categories = [...new Set(books.map(book => book.category))];
+
+        function initializeFilters() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                categoryFilter.appendChild(option);
             });
         }
-</script>
 
+        function renderBooks(booksToRender) {
+            const booksGrid = document.getElementById('booksGrid');
+            
+            if (booksToRender.length === 0) {
+                booksGrid.innerHTML = '<div class="no-results">No books found matching your criteria 📚</div>';
+                return;
+            }
+
+            booksGrid.innerHTML = booksToRender.map(book => `
+                <a href="${book.link}" class="book-card fade-in" target="_blank" rel="noopener noreferrer">
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-author">by ${book.author}</p>
+                    <span class="book-category">${book.category}</span>
+                </a>
+            `).join('');
+
+            updateStats(booksToRender.length);
+        }
+
+        function updateStats(visibleCount) {
+            document.getElementById('totalBooks').textContent = books.length;
+            document.getElementById('visibleBooks').textContent = visibleCount;
+        }
+
+        function filterBooks(category) {
+            if (category === 'all') {
+                filteredBooks = [...books];
+            } else {
+                filteredBooks = books.filter(book => book.category === category);
+            }
+            
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            if (searchTerm) {
+                filteredBooks = filteredBooks.filter(book =>
+                    book.title.toLowerCase().includes(searchTerm) ||
+                    book.author.toLowerCase().includes(searchTerm) ||
+                    book.category.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderBooks(filteredBooks);
+        }
+
+        function searchBooks(searchTerm) {
+            const activeCategory = document.getElementById('categoryFilter').value;
+            let searchResults = books;
+            
+            if (activeCategory !== 'all') {
+                searchResults = books.filter(book => book.category === activeCategory);
+            }
+            
+            if (searchTerm) {
+                searchResults = searchResults.filter(book =>
+                    book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    book.category.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+            
+            filteredBooks = searchResults;
+            renderBooks(filteredBooks);
+        }
+
+        // Event listeners
+        document.getElementById('categoryFilter').addEventListener('change', (e) => {
+            filterBooks(e.target.value);
+        });
+
+        document.getElementById('searchBar').addEventListener('input', (e) => {
+            searchBooks(e.target.value);
+        });
+
+        // Initialize the app
+        initializeFilters();
+        renderBooks(books);
     </script>
 </body>
 </html>
-
