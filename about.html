@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Ferketox | Business Networking Platform</title>
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--black);
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            nav ul {
+                margin-top: 0;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 300;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 300;
+        }
+        
+        /* Leadership Section */
+        .leadership {
+            padding: 60px 0;
+            background-color: var(--gray);
+        }
+        
+        .leadership-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .leader-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .leader-name {
+            font-size: 20px;
+            margin: 20px 0 5px;
+            font-weight: 500;
+        }
+        
+        .leader-title {
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        /* Library Section */
+        .library-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            border: none;
+            margin-top: 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #333;
+        }
+        
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="/" class="logo">FERKETOX</a>
+        </div>
+    </header>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h1 class="section-title">Connecting Businesses, Creating Opportunities</h1>
+            <div class="about-content">
+                <p>Ferketox is a revolutionary platform designed to bring businesses together for meaningful networking and collaboration. Founded on the principle that stronger connections lead to greater success, we've built an ecosystem where companies of all sizes can thrive together.</p>
+                
+                <p>Our mission is to break down barriers in the business world by creating a space where knowledge, resources, and opportunities flow freely between organizations. Whether you're a startup looking for guidance or an established firm seeking innovation, Ferketox provides the tools to make valuable connections.</p>
+                
+                <p>Beyond networking, we're committed to business education through our free Library of Ferketox - a growing collection of resources dedicated to business studies, strategy, and professional development.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Leadership Section -->
+    <section class="leadership">
+        <div class="container">
+            <h2 class="section-title">Our Leadership</h2>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <!-- Placeholder for image -->
+                        <div style="width: 120px; height: 120px; background-color: #ddd; border-radius: 50%; margin: 0 auto;"></div>
+                    </div>
+                    <h3 class="leader-name">Zainab Usman</h3>
+                    <p class="leader-title">CEO & Founder</p>
+                    <p>Visionary leader who established Ferketox to transform business networking through technology.</p>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <!-- Placeholder for image -->
+                        <div style="width: 120px; height: 120px; background-color: #ddd; border-radius: 50%; margin: 0 auto;"></div>
+                    </div>
+                    <h3 class="leader-name">Saira Tariq</h3>
+                    <p class="leader-title">Chief Financial Officer</p>
+                    <p>Financial strategist ensuring Ferketox's sustainable growth and value creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Library Section -->
+    <section class="library-section">
+        <div class="container">
+            <h2 class="section-title">Library of Ferketox</h2>
+            <div class="about-content">
+                <p>Our free business education library offers carefully curated resources to help professionals at all levels. From startup guides to advanced corporate strategy, the Library of Ferketox is our contribution to business knowledge sharing.</p>
+                <a href="index.html" class="cta-button">Explore the Library</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Ferketox. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
